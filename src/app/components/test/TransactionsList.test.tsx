@@ -29,9 +29,9 @@ describe('TransactionsList', () => {
   it('filtra por texto correctamente', async () => {
     render(<TransactionsList items={mockTransactions} simulateLoadingMs={0} />);
 
-  const input = screen.getByLabelText(/buscar por descripción/i);
+  const input = screen.getByLabelText(/filter by description/i);
     fireEvent.change(input, { target: { value: 'Netflix' } });
-  await waitForElementToBeRemoved(() => screen.queryByText(/Cargando transacciones.../i));
+ await waitForElementToBeRemoved(() => screen.queryByText(/Loading transactions.../i));
 
   expect(await screen.findByText(/Netflix/)).toBeInTheDocument();
   expect(screen.queryByText(/Supermercado DIA/)).not.toBeInTheDocument();
